@@ -1,0 +1,7 @@
+libcworklib.a:readfile.o modifyfile.o viewfile.o message.o
+	ar -rc libcworklib.a readfile.o modifyfile.o viewfile.o message.o
+libcwork.so:menu.c newfile.c writefile_1.c
+	gcc -shared -fpic -o libcwork.so menu.c newfile.c writefile_1.c
+gcc main.c -o test0 ./libcwork.so -L. -lcworklib
+test0: main.o menu.o newfile.o writefile_1.o readfile.o modifyfile.o viewfile.o message.o 
+	gcc main.o menu.o newfile.o writefile_1.o readfile.o modifyfile.o viewfile.o message.o -o test0 
